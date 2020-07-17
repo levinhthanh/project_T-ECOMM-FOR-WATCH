@@ -1,8 +1,29 @@
 <?php
+
+if (!isset($_SESSION['account'])) {
+    session_start();
+}
 // KHÔNG CÓ LỆNH
 if (!isset($_GET['router']) && !isset($_POST['router']) && !isset($_GET['control']) && !isset($_POST['control'])) {
-    include('Model/home_model.php');
-    include('View/home_view.php');
+    if (isset($_SESSION['account']) && isset($_SESSION['password'])) {
+        $account = $_SESSION['account'];
+        $password = $_SESSION['password'];
+        if ($account === 'admin' && $password === 'levinhthanh') {
+            $display_list_customer = 'none';
+            $display_add_employee = 'none';
+            include('View/admin_view.php');
+        } else {
+            if ($account[0] === '$') {
+                include('View/employee_view.php');
+            } else {
+                $display_list_customer = 'none';
+                include('View/admin_view.php');
+            }
+        }
+    } else {
+        include('Model/home_model.php');
+        include('View/home_view.php');
+    }
 }
 // TỒN TẠI GET-ROUTER
 if (isset($_GET['router'])) {
@@ -28,6 +49,7 @@ if (isset($_POST['router'])) {
     $router = $_POST['router'];
     switch ($router) {
         case 'admin': {
+                include('Controller/Controller_admin.php');
                 break;
             }
         case 'employee': {
@@ -43,7 +65,7 @@ if (isset($_POST['router'])) {
 }
 // VÀO TRANG ĐĂNG NHẬP
 if (isset($_GET['control']) && $_GET['control'] === 'login') {
-    include('Model/login_model.php');
+    $error_login = "";
     include('View/login_view.php');
 }
 // VÀO TRANG ĐĂNG KÝ
@@ -58,13 +80,15 @@ if (isset($_POST['control']) && $_POST['control'] === 'require_register') {
 }
 // YÊU CẦU ĐĂNG NHẬP
 if (isset($_POST['control']) && $_POST['control'] === 'require_login') {
-    include('Model/login_model.php');
+    $account = $_POST['account'];
+    $password = $_POST['password'];
+    $result_check = System::check_login($account, $password);
     if ($result_check['status_login'] === 'success') {
         $_SESSION['account'] = $account;
         $_SESSION['password'] = $password;
         if ($result_check['account_of'] === 'admin') {
-            include('Model/admin_model.php');
-            include('View/admin_view.php');
+            $check_admin = true;
+            include('Controller/Controller_admin.php');
         }
         if ($result_check['account_of'] === 'employee') {
             include('View/employee_view.php');

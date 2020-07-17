@@ -100,13 +100,13 @@ class System
             }
         }
         // check birthday  
-        $checkBirthday = "/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/";
+        $checkBirthday = substr($birthday,0,4);
         $birthday_error = "";
         if ($birthday === "") {
             $birthday_error = "* Ngày sinh chưa được nhập!";
             $checkForm = false;
         } else {
-            if (!preg_match($checkBirthday, $birthday)) {
+            if ($checkBirthday > 2000 || $checkBirthday < 1970) {
                 $birthday_error = "* $birthday là ngày không hợp lệ!";
                 $checkForm = false;
             }

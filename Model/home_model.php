@@ -10,7 +10,7 @@ if(!isset($_SESSION['count_in_box'])){
     $box_products_show = "";
     $btn_buy_display = "none";
 }
-if(isset($_SESSION['account']) && isset($_SESSION['password'])){
+if(isset($_SESSION['account']) && isset($_SESSION['password']) && $_SESSION['account'] !== 'admin'){
     $log_in = "none";
     $log_out = "block"; 
     $account = $_SESSION['account'];

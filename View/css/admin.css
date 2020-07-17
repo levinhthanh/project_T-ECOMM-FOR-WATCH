@@ -6,7 +6,15 @@ body {
     width: 100vw;
     background-color: #071418;
 }
-
+input{
+    text-align: center;
+}
+input:focus,select:focus{
+    outline: none;
+}
+select{
+    padding: 0.3vw;
+}
 .container_full {
     width: 100%;
     display: flex;
@@ -55,7 +63,7 @@ body {
 }
 .show_content{
     height: 85vh;
-    background-image: url('../../images/background/dong-ho-parnis.jpg');   
+    background-image: url('View/images/background/dong-ho-parnis.jpg');   
 }
 
 .title{
@@ -140,9 +148,145 @@ body {
     display: block;
   }
 
+  table{
+    margin: auto;
+    margin-top: 1.2vw;
+    border-collapse: collapse;
+    background-color: #D8D8D8;
+}
+tr,td{
+    border: solid 0.1vw dimgrey;
+    text-align: center;
+    
+}
+#btn_edit{
+width: 1vw;
+margin-left: 0.5vw;
+margin-right: 0.5vw;
+color: blue;
+}
+#btn_delete{
+width: 1vw;
+color: red;
+} 
 
-  /* add_employee */
-  .add_employee{
+/* show_list_customer */
+#label_manager_customer{
+    color: black;
+    border-bottom: solid 0.1vw darkgray;
+    display: block;
+    padding: 1vw;
+    font-size: 2vw;
+    font-weight: bold;
+    
+ }
+ .tools_customer{
+     display: flex;
+     border-bottom: solid 0.1vw darkgray;
+     padding:0 0 1vw 2vw;
+ }
+.list_customer{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow: scroll;
+    }
+#table_list_customer{
+    border: solid 0.1vw darkgrey;
+    border-collapse: collapse;
+    margin-bottom: 2vw;
+    background-color: #D8D8D8;
+    width: 97%;
+    }
+#td_list_customer{
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
+#th_list_customer{
+    border: solid 0.1vw darkgrey;
+    padding: 1vw;
+    color: darkorange;
+    font-weight: bold;
+    background-color: dimgrey;
+    }
+#a_manager_customer{
+        text-decoration: none;
+        padding: 0 0.5vw;
+    }
+#img_list_customer{
+    width: 5vw;
+    }
+#tb_customer_name{
+    width: 12vw;
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
+/* Xóa khách hàng */
+.delete_customer_cover{
+    margin-left: 25vw;
+}
+#lable_delete_customer{
+display: block;
+padding: 0.5vw;
+}
+.btn_delete_customer{
+    display: flex;
+    margin-left: 2vw;
+}
+    
+#confirm_delete{
+    width: 8vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: green;
+    
+    }
+#cancel_delete{
+    width: 8vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: red;
+    margin-left: 2vw;
+    }
+#confirm_delete:hover, #cancel_delete:hover{
+    cursor: pointer;
+    color: black;
+    }
+/* Sửa khách hàng */
+.edit_customer_cover{
+    margin-left: 25vw;
+}
+#lable_edit_customer{
+display: block;
+padding: 0.5vw;
+}
+.btn_edit_customer{
+    display: flex;
+    margin-left: 2vw;
+}
+    
+#confirm_edit{
+    width: 8vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: green;
+    
+    }
+#cancel_edit{
+    width: 8vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: red;
+    margin-left: 2vw;
+    }
+#confirm_edit:hover, #cancel_edit:hover{
+    cursor: pointer;
+    color: black;
+    }
+
+/* Thêm nhân viên */
+.add_employee{
     height: 85vh;
     background-color: white;
     font-size: 1vw;
@@ -171,389 +315,178 @@ body {
       padding: 1vw 0 1vw 1vw;
       font-size: 1.3vw;
   }
-   /* add_product */
-   .add_product{
-    height: 84vh;
-    background-color: white;
-    font-size: 1vw;
-    overflow: scroll;
-  }
-  #label_manager_product{
-     color: black;
-     border-bottom: solid 0.1vw darkgray;
-     display: block;
-     padding: 1vw;
-     font-size: 2vw;
-     font-weight: bold;
-     
-  }
-  .tools_product{
-      display: flex;
-      border-bottom: solid 0.1vw darkgray;
-      padding:0 0 1vw 2vw;
-  }
-  #a_manager_product{
-      text-decoration: none;
-      padding: 0 0.5vw;
-  }
-  #label_add_product{
-    border-bottom: solid 0.1vw darkgray;
-    display: block;
-      padding: 1vw 0 1vw 1vw;
-      font-size: 1.3vw;
-  }
-
-  /* add_customer */
-  .add_customer{
-    height: 85vh;
-    background-color: white;
-    font-size: 1vw;
-  }
-  #label_manager_customer{
-     color: black;
-     border-bottom: solid 0.1vw darkgray;
-     display: block;
-     padding: 1vw;
-     font-size: 2vw;
-     font-weight: bold;
-     
-  }
-  .tools_customer{
-      display: flex;
-      border-bottom: solid 0.1vw darkgray;
-      padding:0 0 1vw 2vw;
-  }
-  #a_manager_customer{
-      text-decoration: none;
-      padding: 0 0.5vw;
-  }
-  #label_add_customer{
-    border-bottom: solid 0.1vw darkgray;
-    display: block;
-      padding: 1vw 0 1vw 1vw;
-      font-size: 1.3vw;
-  }
-
-
-
-
-
-table{
-    margin: auto;
-    margin-top: 1.2vw;
-    border-collapse: collapse;
-    background-color: #D8D8D8;
-}
-tr,td{
-    border: solid 0.1vw dimgrey;
-    text-align: center;
-    
-}
-#td_left{
+  #td_left_add_employee{
     width: 8vw;
     height: 2vw;
     padding: 0.2vh;
     color: darkred;
     font-weight: bold;
+    background-color: #D8D8D8;
 }
-  #td_right{
+  #td_right_add_employee{
     width: 25vw;
     height: 2vw;
     padding: 0.2vh;
     display: flex;
     border: none;
+    background-color: aliceblue;
 }
-input{
+#input_add_employee{
+    width: 110%;
+    margin: auto;
     text-align: center;
-    width: 23vw;
     border: none;
-    background-color: #D8D8D8;
-  }
-  select{
-    width: 13vw;
-   margin: auto; 
-    font-size: 1vw; 
-    padding: 0.3vw;
-    padding-left: 1vw;
-    background-color: #D8D8D8;
-  }
-  #button_add{
-    border: solid 0.1vw black;
-    width: 10vw;
-    margin-left: 7.5vw ;
-    border-radius: 5vw;
-    box-shadow: cadetblue 0.1vw 0.1vw;
-    font-size: 1vw;
-    color: white;
-    background-color: blue;
-  }
-  #button_add:hover{
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      background-color: darkorange;
-  }
-  input:focus,select:focus{
+    background-color: aliceblue;
+}
+#input_add_employee:focus{
     outline: none;
-  }
-#icon_status{
-    width: 2vw;
-    margin-top: 0.5vw;
-    
+}
+#icon_add_employee{
+    width: 10%;
+    margin-top: 0.35vw;
+    margin-right: 0;
+}
+#button_add_employee{
+    width: 40%;
+    margin: auto;
+    color: white;
+    background-color: darkorange;
+    border: solid 0.1vw darkgray;
+    box-shadow: 0.1vw 0.1vw dimgray;
+}
+#button_add_employee:hover{
+    background-color: blue;
+}
+#possition_add_employee{
+    width: 50%;
+    margin: auto;
+    padding: 0.2vw;
+}
+#possition_add_employee:focus{
+    outline: none;
 }
 #lable_confirm{
-    margin-left: 36vw;
-    color: red;
+    margin-left: 33vw;
+    color: green;
 }
-#lable_notification{
-    margin-left: 30vw;
-    color: red;
-}
+
+
+
+
+
+
+
+
 /* show_list_employee */
+#label_manager_employee{
+    color: black;
+    border-bottom: solid 0.1vw darkgray;
+    display: block;
+    padding: 1vw;
+    font-size: 2vw;
+    font-weight: bold;
+    
+ }
+ .tools_employee{
+     display: flex;
+     border-bottom: solid 0.1vw darkgray;
+     padding:0 0 1vw 2vw;
+ }
 .list_employee{
-   background-color: white;
-   height: 100%;
-   margin: auto;
-   overflow: scroll;
-}
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow: scroll;
+    }
 #table_list_employee{
-   border: solid 0.1vw darkgrey;
-   border-collapse: collapse;
-   margin-bottom: 2vw;
-   background-color: #D8D8D8;
-   width: 97%;
-}
+    border: solid 0.1vw darkgrey;
+    border-collapse: collapse;
+    margin-bottom: 2vw;
+    background-color: #D8D8D8;
+    width: 97%;
+    }
 #td_list_employee{
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
-}
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
 #th_list_employee{
-border: solid 0.1vw darkgrey;
-padding: 1vw;
-color: darkorange;
-font-weight: bold;
-background-color: dimgrey;
+    border: solid 0.1vw darkgrey;
+    padding: 1vw;
+    color: darkorange;
+    font-weight: bold;
+    background-color: dimgrey;
+    }
+#a_manager_employee{
+        text-decoration: none;
+        padding: 0 0.5vw;
+    }
+#img_list_employee{
+    width: 5vw;
+    }
+#tb_employee_name{
+    width: 12vw;
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
+/* Xóa nhân viên */
+.delete_employee_cover{
+    margin-left: 25vw;
 }
-/* show_list_product */
-.list_product{
-background-color: white;
-height: 100%;
-margin: auto;
-overflow: scroll;
-}
-#table_list_product{
-border: solid 0.1vw darkgrey;
-border-collapse: collapse;
-margin-bottom: 2vw;
-background-color: #D8D8D8;
-width: 97%;
-}
-#td_list_product{
-border: solid 0.1vw darkgrey;
+#lable_delete_employee{
+display: block;
 padding: 0.5vw;
 }
-#th_list_product{
-border: solid 0.1vw darkgrey;
-padding: 1vw;
-color: darkorange;
-font-weight: bold;
-background-color: dimgrey;
-}
-#img_list_product{
-width: 5vw;
-}
-#tb_product_name{
-width: 12vw;
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
+.btn_delete_employee{
+    display: flex;
+    margin-left: 2vw;
 }
 
-/* show_list_customer */
-.list_customer{
-background-color: white;
-height: 100%;
-margin: auto;
-overflow: scroll;
-}
-#table_list_customer{
-border: solid 0.1vw darkgrey;
-border-collapse: collapse;
-margin-bottom: 2vw;
-background-color: #D8D8D8;
-width: 97%;
-}
-#td_list_customer{
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
-}
-#th_list_customer{
-border: solid 0.1vw darkgrey;
-padding: 1vw;
-color: darkorange;
-font-weight: bold;
-background-color: dimgrey;
-}
-#img_list_customer{
-width: 5vw;
-}
-#tb_customer_name{
-width: 12vw;
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
-}
-
-/* SỬA VÀ XÓA */
-#btn_edit{
-width: 1vw;
-margin-left: 1vw;
-margin-right: 0.5vw;
-color: blue;
-}
-#btn_delete{
-width: 1vw;
-color: red;
-}
-.edit_delete{
-display: flex;
-text-align: center;
-}
-
-
-
-
-/* edit_employee */
-.edit_employee{
-height: 85vh;
-background-color: white;
-font-size: 1vw;
-}
+ /* Chỉnh sửa nhân viên */
+ .edit_employee{
+    height: 85vh;
+    background-color: white;
+    font-size: 1vw;
+    overflow: scroll;
+  }
 #table_edit_employee{
-border: solid 0.1vw darkgrey;
-border-collapse: collapse;
-margin-top: 2vw;
-margin-bottom: 2vw;
-background-color: #D8D8D8;
-width: 60%;
+    border: solid 0.1vw darkgrey;
+    border-collapse: collapse;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    background-color: #D8D8D8;
+    width: 60%;
 }
 #td_edit_employee{
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
+ border: solid 0.1vw darkgrey;
+ padding: 0.5vw;
+ text-align: center;
 }
 #th_edit_employee{
-border: solid 0.1vw darkgrey;
-padding: 1vw;
-color: darkorange;
-font-weight: bold;
-background-color: dimgrey;
+ border: solid 0.1vw darkgrey;
+ padding: 1vw;
+ color: darkorange;
+ font-weight: bold;
+ background-color: dimgrey;
+ text-align: center;
 }
 #btn_update_employee{
-margin-left: 47vw;
-width: 15vw;
-padding: 0.5vw;
-color: white;
-background-color: darkorange;
+    margin-left: 46vw;
+    width: 15vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: darkorange;
 }
 #btn_update_employee:focus{
-outline: none;
+    outline: none;
 }
 #btn_update_employee:hover{
-cursor: pointer;
-background-color: blue;
+    cursor: pointer;
+    background-color: blue;
 }
-#error_update_employee{
-display: block;
-color: red;
-margin-left: 47vw;
-padding: 0.5vw;
-}
-/* Xóa nhân viên */
-#lable_delete_employee{
-margin-left: 30vw;
-display: block;
-padding: 0.5vw;
-}
-.btn_delete{
-display: flex;
-margin: auto;
-}
-#confirm_delete{
-width: 8vw;
-padding: 0.5vw;
-color: white;
-background-color: green;
-
-}
-#cancel_delete{
-width: 8vw;
-padding: 0.5vw;
-color: white;
-background-color: red;
-margin-left: 2vw;
-
-}
-#confirm_delete:hover, #cancel_delete:hover{
-cursor: pointer;
-color: black;
-}
-
-
-/* edit_product */
-.edit_product{
-height: 85vh;
-background-color: white;
-font-size: 1vw;
-overflow: scroll;
-}
-#table_edit_product{
-border: solid 0.1vw darkgrey;
-border-collapse: collapse;
-margin-top: 2vw;
-margin-bottom: 2vw;
-background-color: #D8D8D8;
-width: 80%;
-
-}
-#td_edit_product{
-border: solid 0.1vw darkgrey;
-padding: 0.5vw;
-}
-#th_edit_product{
-border: solid 0.1vw darkgrey;
-padding: 1vw;
-color: darkorange;
-font-weight: bold;
-background-color: dimgrey;
-}
-#btn_update_product{
-margin-left: 52vw;
-width: 15vw;
-padding: 0.5vw;
-color: white;
-background-color: darkorange;
-}
-#btn_update_product:focus{
-outline: none;
-}
-#btn_update_product:hover{
-cursor: pointer;
-background-color: blue;
-}
-#error_update_product{
-display: block;
-color: red;
-margin-left: 52vw;
-padding: 0.5vw;
-}
-
-/* Xóa sản phẩm */
-#lable_delete_product{
-margin-left: 26vw;
-display: block;
-padding: 0.5vw;
-}
-/* Xóa khách hàng */
-#lable_delete_customer{
-margin-left: 29vw;
-display: block;
-padding: 0.5vw;
+#status_update_employee{
+    display: block;
+    color: red;
+    margin-left: 44vw;
+    padding: 0.5vw;
 }
