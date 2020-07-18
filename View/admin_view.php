@@ -200,7 +200,9 @@
                                         <option value="Orient">Orient</option>
                                         <option value="Movado">Movado</option>
                                         <option value="Police">Police</option>
-                                        <option value="Teintop">Teintop</option>
+                                        <option value="TeinTop">TeinTop</option>
+                                        <option value="Rolex">Rolex</option>
+                                        <option value="Omega">Omega</option>
                                     </select>
                                     <i id="icon_add_product" class="far fa-hand-pointer"></i>
                                 </td>

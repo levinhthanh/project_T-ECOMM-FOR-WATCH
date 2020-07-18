@@ -40,12 +40,11 @@ if (isset($_GET['router'])) {
                 break;
             }
         case 'employee': {
+                include('Controller/Controller_employee.php');
                 break;
             }
         case 'customer': {
-                break;
-            }
-        case 'admin': {
+                include('Controller/Controller_customer.php');
                 break;
             }
     }
@@ -59,12 +58,11 @@ if (isset($_POST['router'])) {
                 break;
             }
         case 'employee': {
+                include('Controller/Controller_employee.php');
                 break;
             }
         case 'customer': {
-                break;
-            }
-        case 'admin': {
+                include('Controller/Controller_customer.php');
                 break;
             }
     }

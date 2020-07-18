@@ -176,7 +176,9 @@ class Admin
                       <option value='Orient'>Orient</option>
                       <option value='Movado'>Movado</option>
                       <option value='Police'>Police</option>
-                      <option value='Teintop'>Teintop</option>
+                      <option value='TeinTop'>TeinTop</option>
+                      <option value='Rolex'>Rolex</option>
+                      <option value='Omega'>Omega</option>
                    </select>
                 </td>
                 </tr>

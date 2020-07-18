@@ -1,4 +1,4 @@
-let slide_show = ['images/background/slide1.jpg', 'images/background/slide2.jpg', 'images/background/slide3.jpg', 'images/background/slide4.jpg'];
+let slide_show = ['View/images/background/slide1.jpg', 'View/images/background/slide2.jpg', 'View/images/background/slide3.jpg', 'View/images/background/slide4.jpg'];
 let i = 0;
 window.onload = function () {
   setInterval(function () {
@@ -32,7 +32,7 @@ function showDivs(n) {
 
 // dot dot dot
 function show_product_line(){
-  content = '<a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=candino">Candino</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=claude_bernard">Claude Bernard</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=fossil">Fossil</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=orient">Orient</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=movado">Movado</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=police">Police</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=teintop">Teintop</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=rolex">Rolex</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=omega">Omega</a>';
+  content = '<a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Candino">Candino</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Claude_bernard">Claude Bernard</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Fossil">Fossil</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Orient">Orient</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Movado">Movado</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Police">Police</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=TeinTop">TeinTop</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Rolex">Rolex</a><a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Omega">Omega</a>';
   document.getElementById('contents').innerHTML = content;
   document.getElementById('watch_line_dot_dot_dot').innerHTML = '';
 }

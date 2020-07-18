@@ -89,25 +89,25 @@
                 <div class="drop_product_list">
                     <div style="display: flex;">
                         <div>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=rado">Rado</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=casio">Casio</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=seiko">Seiko</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=citizen">Citizen</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=apple_watch">Apple watch</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Rado">Rado</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Casio">Casio</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Seiko">Seiko</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Citizen">Citizen</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Apple_watch">Apple watch</a>
                         </div>
                         <div>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=bulova">Bulova</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=candino">Candino</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=claude_bernard">Claude Bernard</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=fossil">Fossil</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=orient">Orient</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Bulova">Bulova</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Candino">Candino</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Claude_bernard">Claude Bernard</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Fossil">Fossil</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Orient">Orient</a>
                         </div>
                         <div>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=movado">Movado</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=police">Police</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=teintop">Teintop</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=rolex">Rolex</a>
-                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=omega">Omega</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Movado">Movado</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Police">Police</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=TeinTop">Teintop</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Rolex">Rolex</a>
+                            <a id="watch_line_drop" href="index.php?router=customer&control=watch_product&product_line=Omega">Omega</a>
                         </div>
                     </div>
                 </div>
@@ -134,22 +134,137 @@
         <div class="main">
             <div class="selections">
                 <label id="lable_product_line">~ CÁC HÃNG ĐỒNG HỒ ~</label>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=rado">Rado</a>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=casio">Casio</a>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=seiko">Seiko</a>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=citizen">Citizen</a>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=apple_watch">Apple watch</a>
-                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=bulova">Bulova</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Rado">Rado</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Casio">Casio</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Seiko">Seiko</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Citizen">Citizen</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Apple_watch">Apple watch</a>
+                <a id="watch_line" href="index.php?router=customer&control=watch_product&product_line=Bulova">Bulova</a>
                 <div id="contents"></div>
                 <div id="watch_line_dot_dot_dot" onclick="show_product_line()">...</div>
-
-
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="show_products">
+                <div id="slide_show" style="display:<?= $slide_show ?>"><img id="slide_image" src="View/images/background/slide1.jpg"></div>
 
+                <div class="new_list" style="display:<?= $new_list ?>">
+                    <label id="lable_product_list">~ SẢN PHẨM MỚI ~</label>
+                    <div class="grid_products">
+                        <div class="product_show"><?= $product_new[0] ?></div>
+                        <div class="product_show"><?= $product_new[1] ?></div>
+                        <div class="product_show"><?= $product_new[2] ?></div>
+                        <div class="product_show"><?= $product_new[3] ?></div>
+                        <div class="product_show"><?= $product_new[4] ?></div>
+                        <div class="product_show"><?= $product_new[5] ?></div>
+                        <div class="product_show"><?= $product_new[6] ?></div>
+                        <div class="product_show"><?= $product_new[7] ?></div>
+                        <div class="product_show"><?= $product_new[8] ?></div>
+                        <div class="product_show"><?= $product_new[9] ?></div>
+                        <div class="product_show"><?= $product_new[10] ?></div>
+                        <div class="product_show"><?= $product_new[11] ?></div>
+                    </div>
+                </div>
+
+                <div class="slide_show_click" style="display:<?= $slide_show ?>">
+                    <img class="img_slide" src="View/images/background/click1.jpg">
+                    <img class="img_slide" src="View/images/background/click2.jpg">
+                    <img class="img_slide" src="View/images/background/click3.jpg">
+                    <img class="img_slide" src="View/images/background/click4.jpg">
+                    <img class="img_slide" src="View/images/background/click5.jpg">
+
+                    <button class="button_click_slide_left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="button_click_slide_right" onclick="plusDivs(1)">&#10095;</button>
+                </div>
+
+                <div class="hot_list" style="display:<?= $hot_list ?>">
+                    <label id="lable_product_list">~ SẢN PHẨM HOT ~</label>
+                    <div class="grid_products">
+                        <div class="product_show"><?= $product_hot[0] ?></div>
+                        <div class="product_show"><?= $product_hot[1] ?></div>
+                        <div class="product_show"><?= $product_hot[2] ?></div>
+                        <div class="product_show"><?= $product_hot[3] ?></div>
+                        <div class="product_show"><?= $product_hot[4] ?></div>
+                        <div class="product_show"><?= $product_hot[5] ?></div>
+                        <div class="product_show"><?= $product_hot[6] ?></div>
+                        <div class="product_show"><?= $product_hot[7] ?></div>
+                        <div class="product_show"><?= $product_hot[8] ?></div>
+                        <div class="product_show"><?= $product_hot[9] ?></div>
+                        <div class="product_show"><?= $product_hot[10] ?></div>
+                        <div class="product_show"><?= $product_hot[11] ?></div>
+                    </div>
+                </div>
+
+                <?=$new_list_group?>
+                <?=$hot_list_group?>
+                <?=$line_list_group?>
 
 
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="advertise">
                 <label id="lable_product_box">~ GIỎ HÀNG ~</label>
                 <div>

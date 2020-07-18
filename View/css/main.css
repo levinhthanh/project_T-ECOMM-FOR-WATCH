@@ -78,20 +78,22 @@
 
 .grid_products{
     display: grid;
-    grid-template-columns: 33.33% 33.33%  33.33% ;
+    grid-template-columns: 25% 25% 25% 25% ;
     margin-top: 0.1vw;
   }
 .product_show{
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: white;
     border: 0.1vw solid rgba(0, 0, 0, 0.8);
     margin: 0.1vw;
-    height: 34vw;
+    height: 24vw;
+    padding-top: 1vw;
   }
   .product_show:hover {
     transform: scale(1.2);
   }
   #image_product_show{
-      width: 20vw;
+      /* width: 15vw; */
+      height: 15vw;
       display: block;
       margin: auto;
       
