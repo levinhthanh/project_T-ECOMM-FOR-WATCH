@@ -1,13 +1,33 @@
 <?php
 // Khai báo
-$display_list_employee = 'none';
-$delete_employee = "none";
-$display_edit_employee = "none";
-$status_update = "";
 $display_list_customer = 'none';
 $delete_customer = "none";
 $edit_customer = "none";
 
+$display_list_product = 'none';
+$delete_product = "none";
+$display_edit_product = "none";
+
+$display_add_product = 'none';
+$lable_confirm = 'none';
+$status_add = "";
+$name = "";
+$name_status = 'fas fa-pencil-alt';
+$name_color = 'black';
+$price_buy = "";
+$price_buy_status = 'fas fa-pencil-alt';
+$price_buy_color = 'black';
+$price_sale = "";
+$price_sale_status = 'fas fa-pencil-alt';
+$price_sale_color = 'black';
+$count = "";
+$count_status = 'fas fa-pencil-alt';
+$count_color = 'black';
+
+$display_list_employee = 'none';
+$delete_employee = "none";
+$display_edit_employee = "none";
+$status_update = "";
 $display_add_employee = "none";
 $fullname_employee = "";
 $fullname_color = 'black';
@@ -38,6 +58,34 @@ $lable_confirm = 'none';
 if (isset($_GET['control'])) {
     $control = $_GET['control'];
     switch ($control) {
+        case 'edit_product': {
+                $code = $_GET['code'];
+                $name = $_GET['name'];
+                $display_edit_product = 'block';
+                $table_one_product = Admin::get_one_product($code);
+                include('View/admin_view.php');
+                break;
+            }
+        case 'delete_product': {
+                $code = $_GET['code'];
+                $name = $_GET['name'];
+                $display_list_product = 'block';
+                $table_list_product = Admin::get_list_products();
+                $delete_product = "block";
+                include('View/admin_view.php');
+                break;
+            }
+        case 'show_product_list': {
+                $display_list_product = 'block';
+                $table_list_product = Admin::get_list_products();
+                include('View/admin_view.php');
+                break;
+            }
+        case 'add_product': {
+                $display_add_product = 'block';
+                include('View/admin_view.php');
+                break;
+            }
         case 'show_employee_list': {
                 $display_list_employee = 'block';
                 $table_list_employee = Admin::get_list_employees();
@@ -59,10 +107,10 @@ if (isset($_GET['control'])) {
                 break;
             }
         case 'logout': {
-                session_destroy();
                 $hiUser = "";
                 $log_in = "block";
                 $log_out = "none";
+                session_destroy();
                 include('Model/home_model.php');
                 include('View/home_view.php');
                 break;
@@ -104,6 +152,153 @@ if (isset($_GET['control'])) {
 if (isset($_POST['control'])) {
     $control = $_POST['control'];
     switch ($control) {
+        case 'require_update_product': {
+                $display_edit_product = "block";
+
+                $code = $_POST['code'];
+                $name = $_POST['name'];
+                $price_buy = $_POST['price_buy'];
+                $price_sale = $_POST['price_sale'];
+                $count = $_POST['count'];
+                $line_name = $_POST['line'];
+                $image1 = $_FILES['image1'];
+                move_uploaded_file($image1['tmp_name'], 'View/images/watchs/' . $image1['name']);
+                $image2 = $_FILES['image2'];
+                move_uploaded_file($image2['tmp_name'], 'View/images/watchs/' . $image2['name']);
+                $image3 = $_FILES['image3'];
+                move_uploaded_file($image3['tmp_name'], 'View/images/watchs/' . $image3['name']);
+                $status = $_POST['status'];
+                $is_hot = $_POST['is_hot'];
+                $is_new = $_POST['is_new'];
+                $hot_sale = $_POST['hot_sale'];
+                $result = Admin::validate_update_product(
+                    $name,
+                    $price_buy,
+                    $price_sale,
+                    $count,
+                    $hot_sale
+                );
+                if ($result['status'] === 'success') {
+                    Admin::update_product(
+                        $code,
+                        $name,
+                        $price_buy,
+                        $price_sale,
+                        $count,
+                        $line_name,
+                        $image1,
+                        $image2,
+                        $image3,
+                        $status,
+                        $is_hot,
+                        $is_new,
+                        $hot_sale
+                    );
+                    $status_update = "Bạn đã cập nhật sản phẩm thành công!";
+                }
+                if ($result['status'] === 'error') {
+                    $status_update = "Có lỗi, vui lòng kiểm tra đầu vào lại!";
+                }
+                $table_one_product = Admin::get_one_product($code);
+                $display_edit_product = "block";
+                include('View/admin_view.php');
+                break;
+            }
+        case 'require_delete_product': {
+                $display_list_product = 'block';
+                $code = $_POST['code'];
+                Admin::delete_product($code);
+                $table_list_product = Admin::get_list_products();
+                include('View/admin_view.php');
+                break;
+            }
+        case 'require_add_product': {
+                $name = $_POST['name'];
+                $price_buy = $_POST['price_buy'];
+                $price_sale = $_POST['price_sale'];
+                $count = $_POST['count'];
+                $line = $_POST['line'];
+                $image1 = $_FILES['image1'];
+                move_uploaded_file($image1['tmp_name'], 'View/images/watchs/' . $image1['name']);
+                $image2 = $_FILES['image2'];
+                move_uploaded_file($image2['tmp_name'], 'View/images/watchs/' . $image2['name']);
+                $image3 = $_FILES['image3'];
+                move_uploaded_file($image3['tmp_name'], 'View/images/watchs/' . $image3['name']);
+                $status = $_POST['status'];
+                if (isset($_POST['is_new'])) {
+                    $is_new = $_POST['is_new'];
+                } else {
+                    $is_new = 'not';
+                }
+                if (isset($_POST['is_hot'])) {
+                    $is_hot = $_POST['is_hot'];
+                } else {
+                    $is_hot = 'not';
+                }
+                $result = Admin::validate_product($name, $price_buy, $price_sale, $count);
+                if ($result['status'] === 'success') {
+                    Admin::save_new_product(
+                        $name,
+                        $price_buy,
+                        $price_sale,
+                        $count,
+                        $line,
+                        $image1,
+                        $image2,
+                        $image3,
+                        $status,
+                        $is_new,
+                        $is_hot
+                    );
+                    $name_color = 'green';
+                    $name_status = 'fas fa-check';
+                    $price_buy_color = 'green';
+                    $price_buy_status = 'fas fa-check';
+                    $price_sale_color = 'green';
+                    $price_sale_status = 'fas fa-check';
+                    $count_color = 'green';
+                    $count_status = 'fas fa-check';
+                    $display_add_product = 'block';
+                    $lable_confirm = 'block';
+                    $status_add = 'Bạn đã thêm sản phẩm thành công!';
+                    include('View/admin_view.php');
+                    break;
+                } else {
+                    if ($result['name'] === 'error') {
+                        $name_color = 'red';
+                        $name_status = 'fas fa-times';
+                    } else {
+                        $name_color = 'green';
+                        $name_status = 'fas fa-check';
+                    }
+                    if ($result['price_buy'] === 'error') {
+                        $price_buy_color = 'red';
+                        $price_buy_status = 'fas fa-times';
+                    } else {
+                        $price_buy_color = 'green';
+                        $price_buy_status = 'fas fa-check';
+                    }
+                    if ($result['price_sale'] === 'error') {
+                        $price_sale_color = 'red';
+                        $price_sale_status = 'fas fa-times';
+                    } else {
+                        $price_sale_color = 'green';
+                        $price_sale_status = 'fas fa-check';
+                    }
+                    if ($result['count'] === 'error') {
+                        $count_color = 'red';
+                        $count_status = 'fas fa-times';
+                    } else {
+                        $count_color = 'green';
+                        $count_status = 'fas fa-check';
+                    }
+                    $display_add_product = 'block';
+                    $lable_confirm = 'block';
+                    $status_add = 'Có lỗi, bạn vui lòng kiểm tra lại!';
+                    include('View/admin_view.php');
+                    break;
+                }
+            }
         case 'require_update_employee': {
                 $display_edit_employee = "block";
 

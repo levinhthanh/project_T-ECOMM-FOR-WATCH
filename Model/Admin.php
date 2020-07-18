@@ -2,6 +2,372 @@
 
 class Admin
 {
+    public static function update_product(
+        $code,
+        $name,
+        $price_buy,
+        $price_sale,
+        $count,
+        $line_name,
+        $image1,
+        $image2,
+        $image3,
+        $status,
+        $is_hot,
+        $is_new,
+        $hot_sale
+    ) {
+        $line_code = new CRUD_database;
+        $line_code->connect();
+        $sql = "SELECT line_code FROM product_line WHERE line_name = '$line_name'";
+        $row = $line_code->executeOne($sql);
+        $line_code = $row['line_code'];
+        
+        $update_product = new CRUD_database;
+        $update_product->connect();
+        $sql = "UPDATE products SET 
+        product_name = '$name',
+        price_buy = '$price_buy',
+        price_sale = '$price_sale',
+        count = '$count',
+        line_code = '$line_code',
+        status = '$status',
+        is_hot = '$is_hot',
+        is_new = '$is_new',
+        hot_sale = '$hot_sale'
+        WHERE product_code = '$code'
+        ";
+        $update_product->updateData($sql);
+
+        $image1 = 'View/images/watchs/' . $image1['name'];
+        $image2 = 'View/images/watchs/' . $image2['name'];
+        $image3 = 'View/images/watchs/' . $image3['name'];
+
+        $images_code = new CRUD_database;
+        $images_code->connect();
+        $sql = "SELECT images_code FROM products WHERE product_code = '$code'";
+        $row = $images_code->executeOne($sql);
+        $images_code = $row['images_code'];
+
+        $update_images = new CRUD_database;
+        $update_images->connect();
+        $sql = "UPDATE images SET image1 = '$image1', image2 = '$image2', image3 = '$image3' 
+        WHERE images_code = $images_code";
+        $update_images->updateData($sql);
+    }
+
+
+    public static function validate_update_product(
+        $name,
+        $price_buy,
+        $price_sale,
+        $count,
+        $hot_sale
+    ) {
+        $checkForm = true;
+        $register_result = [];
+
+        if ($name === "") {
+            $checkForm = false;
+        }
+
+        $check_buy = "/^[0-9]{5,10}$/";
+        if ($price_buy === "" || !preg_match($check_buy, $price_buy)) {
+            $checkForm = false;
+        }
+
+        $check_sale = "/^[0-9]{5,10}$/";
+        if ($price_sale === "" || !preg_match($check_sale, $price_sale)) {
+            $checkForm = false;
+        }
+
+        $check_count = "/^[0-9]{1,6}$/";
+        if ($count === "" || !preg_match($check_count, $count)) {
+            $checkForm = false;
+        }
+
+        $check_hot_sale = "/^[0-9]{1,2}$/";
+        if ($hot_sale === "" || !preg_match($check_hot_sale, $hot_sale)) {
+            $checkForm = false;
+        }
+
+        if ($checkForm) {
+            $register_result['status'] = "success";
+        } else {
+            $register_result['status'] = "error";
+        }
+        return $register_result;
+    }
+
+    public static function get_one_product($code)
+    {
+        $table_one_product = "";
+        $get_info = new CRUD_database;
+        $get_info->connect();
+        $sql = "SELECT * FROM list_products WHERE product_code = $code";
+        $row = $get_info->executeOne($sql);
+        // Thông tin sản phẩm
+        $name = $row['product_name'];
+        $price_buy = $row['price_buy'];
+        $price_sale = $row['price_sale'];
+        $count = $row['count'];
+        $image1 = $row['image1'];
+        $image2 = $row['image2'];
+        $image3 = $row['image3'];
+        $line_name = $row['line_name'];
+        $status = $row['status'];
+        $is_hot = $row['is_hot'];
+        $is_new = $row['is_new'];
+        $hot_sale = $row['hot_sale'];
+
+        $table_one_product .=
+            "
+                <tr>
+                    <td id='td_edit_product'>Tên sản phẩm</td>
+                    <td id='td_edit_product'>$name</td>
+                    <td id='td_edit_product'>
+                    <input type='text' name='name' value='$name'>
+                    </td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Giá nhập</td>
+                    <td id='td_edit_product'>$price_buy</td>
+                    <td id='td_edit_product'><input type='text' name='price_buy' value='$price_buy'></td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Giá bán</td>
+                    <td id='td_edit_product'>$price_sale</td>
+                    <td id='td_edit_product'><input type='text' name='price_sale' value='$price_sale'></td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Số lượng</td>
+                    <td id='td_edit_product'>$count</td>
+                    <td id='td_edit_product'><input type='text' name='count' value='$count'></td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Hình ảnh 1</td>
+                    <td id='td_edit_product'>$image1</td>
+                    <td id='td_edit_product'><input id='file_image' type='file' name='image1' value='$image1'></td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Hình ảnh 2</td>
+                    <td id='td_edit_product'>$image2</td>
+                    <td id='td_edit_product'><input id='file_image' type='file' name='image2' value='$image2'></td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Hình ảnh 3</td>
+                    <td id='td_edit_product'>$image3</td>
+                    <td id='td_edit_product'><input id='file_image' type='file' name='image3' value='$image3'></td>
+                </tr>
+                <tr>
+                <td id='td_edit_product'>Dòng</td>
+                <td id='td_edit_product'>$line_name</td>
+                <td id='td_edit_product'>
+                   <select name='line'>
+                      <option value='Rado'>Rado</option>
+                      <option value='Casio'>Casio</option>
+                      <option value='Seiko'>Seiko</option>
+                      <option value='Citizen'>Citizen</option>
+                      <option value='Apple watch'>Apple watch</option>
+                      <option value='Bulova'>Bulova</option>
+                      <option value='Candino'>Candino</option>
+                      <option value='Claude Bernard'>Claude Bernard</option>
+                      <option value='Fossil'>Fossil</option>
+                      <option value='Orient'>Orient</option>
+                      <option value='Movado'>Movado</option>
+                      <option value='Police'>Police</option>
+                      <option value='Teintop'>Teintop</option>
+                   </select>
+                </td>
+                </tr>
+                <tr>
+                <td id='td_edit_product'>Trạng thái</td>
+                <td id='td_edit_product'>$status</td>
+                <td id='td_edit_product'>
+                   <select name='status'>
+                      <option value='ready'>Ready</option>
+                      <option value='not ready'>Not ready</option>
+                   </select>
+                </td>
+                </tr>
+                <tr>
+                <td id='td_edit_product'>Hot?</td>
+                <td id='td_edit_product'>$is_hot</td>
+                <td id='td_edit_product'>
+                   <select name='is_hot'>
+                      <option value='hot'>Hot</option>
+                      <option value='not'>Not hot</option>
+                   </select>
+                </td>
+                </tr>
+                <tr>
+                <td id='td_edit_product'>New?</td>
+                <td id='td_edit_product'>$is_new</td>
+                <td id='td_edit_product'>
+                   <select name='is_new'>
+                      <option value='new'>New</option>
+                      <option value='not'>Not new</option>
+                   </select>
+                </td>
+                </tr>
+                <tr>
+                    <td id='td_edit_product'>Hot sale</td>
+                    <td id='td_edit_product'>$hot_sale</td>
+                    <td id='td_edit_product'><input type='text' name='hot_sale' value='$hot_sale'></td>
+                </tr>
+              
+                ";
+        return $table_one_product;
+    }
+
+    public static function delete_product($code)
+    {
+        $images_code = new CRUD_database;
+        $images_code->connect();
+        $sql = "SELECT images_code FROM products WHERE product_code = $code";
+        $row = $images_code->executeOne($sql);
+        $images_code = $row['images_code'];
+
+        $delete_product = new CRUD_database;
+        $delete_product->connect();
+        $sql = "DELETE FROM products WHERE product_code = $code";
+        $delete_product->deleteData($sql);
+
+        $delete_images = new CRUD_database;
+        $delete_images->connect();
+        $sql = "DELETE FROM images WHERE images_code = $images_code";
+        $delete_images->deleteData($sql);
+    }
+
+    public static function get_list_products()
+    {
+        $data = new CRUD_database;
+        $data->connect();
+        $sql = "SELECT * FROM list_products";
+        $result = $data->executeAll($sql);
+        $table_list_product = "";
+        foreach ($result as $key => $value) {
+            $image1 = $value['image1'];
+            $product_code = $value['product_code'];
+            $product_name = $value['product_name'];
+            $price_buy = $value['price_buy'];
+            $price_sale = $value['price_sale'];
+            $count = $value['count'];
+            $line_name = $value['line_name'];
+            $status = $value['status'];
+            $is_hot = $value['is_hot'];
+            $is_new = $value['is_new'];
+            $hot_sale = $value['hot_sale'];
+            $table_list_product .=
+                "
+                <tr>
+                <td id='td_list_product'><img src='$image1' style='width:5vw; height:6vw;'></td>
+                <td id='td_list_product'>$product_code</td>
+                <td id='td_list_product'>$product_name</td>
+                <td id='td_list_product'>$price_buy</td>
+                <td id='td_list_product'>$price_sale</td>
+                <td id='td_list_product'>$count</td>
+                <td id='td_list_product'>$line_name</td>
+                <td id='td_list_product'>$status</td>
+                <td id='td_list_product'>$is_hot</td>
+                <td id='td_list_product'>$is_new</td>
+                <td id='td_list_product'>$hot_sale</td>
+                <td id='td_list_product'>
+                <div class='edit_delete'>
+                    <a href='index.php?router=admin&control=edit_product&code=$product_code&name=$product_name' id='btn_edit'><i class='far fa-edit'></i></a>
+                    <a href='index.php?router=admin&control=delete_product&code=$product_code&name=$product_name' id='btn_delete'><i class='far fa-trash-alt'></i></a>
+                </div>
+                </td>
+        </tr>
+        ";
+        }
+        return $table_list_product;
+    }
+
+    public static function save_new_product(
+        $name,
+        $price_buy,
+        $price_sale,
+        $count,
+        $line,
+        $image1,
+        $image2,
+        $image3,
+        $status,
+        $is_new,
+        $is_hot
+    ) {
+        $image1 = 'View/images/watchs/' . $image1['name'];
+        $image2 = 'View/images/watchs/' . $image2['name'];
+        $image3 = 'View/images/watchs/' . $image3['name'];
+        $save_img = new CRUD_database;
+        $save_img->connect();
+        $sql = "INSERT INTO images(image1, image2, image3) VALUES (?,?,?)";
+        $data = array("$image1", "$image2", "$image3");
+        $save_img->insertData($sql, $data);
+
+        $images_code = new CRUD_database;
+        $images_code->connect();
+        $sql = "SELECT images_code FROM images";
+        $row = $images_code->executeAll($sql);
+        foreach ($row as $key => $value) {
+            $images_code = $value['images_code'];
+        }
+
+        $line_code = new CRUD_database;
+        $line_code->connect();
+        $sql = "SELECT line_code FROM product_line WHERE line_name = '$line'";
+        $row = $line_code->executeOne($sql);
+        $line_code = $row['line_code'];
+
+        $save_product = new CRUD_database;
+        $save_product->connect();
+        $sql = "INSERT INTO products(product_name, price_buy, price_sale, count, line_code, images_code, status, is_hot, is_new)
+        VALUES (?,?,?,?,?,?,?,?,?)";
+        $data = array("$name", "$price_buy", "$price_sale", "$count", "$line_code", "$images_code", "$status", "$is_hot", "$is_new");
+        $save_product->insertData($sql, $data);
+    }
+
+    public static function validate_product($name, $price_buy, $price_sale, $count)
+    {
+        $checkForm = true;
+        $register_result = [];
+        $register_result['name'] = "";
+        $register_result['price_buy'] = "";
+        $register_result['price_sale'] = "";
+        $register_result['count'] = "";
+
+        if ($name === "") {
+            $checkForm = false;
+            $register_result['name'] = "error";
+        }
+
+        $check_buy = "/^[0-9]{5,10}$/";
+        if ($price_buy === "" || !preg_match($check_buy, $price_buy)) {
+            $checkForm = false;
+            $register_result['price_buy'] = "error";
+        }
+
+        $check_sale = "/^[0-9]{5,10}$/";
+        if ($price_sale === "" || !preg_match($check_sale, $price_sale)) {
+            $checkForm = false;
+            $register_result['price_sale'] = "error";
+        }
+
+        $check_count = "/^[0-9]{1,6}$/";
+        if ($count === "" || !preg_match($check_count, $count)) {
+            $checkForm = false;
+            $register_result['count'] = "error";
+        }
+
+        if ($checkForm) {
+            $register_result['status'] = "success";
+        } else {
+            $register_result['status'] = "error";
+        }
+        return $register_result;
+    }
+
     public static function update_employee(
         $code,
         $fullname,
@@ -41,27 +407,6 @@ class Admin
         $sql = "UPDATE accounts SET account_name = '$account_name', account_status = '$account_status'
          WHERE account_code = '$account_code'";
         $update_account->updateData($sql);
-        // save account
-        // $password = MD5($password);
-        // $data = array("$account", "$password");
-        // $sql = 'INSERT INTO accounts (account_name, account_password, register_day) values (?,?,NOW())';
-        // $add_account = new CRUD_database;
-        // $add_account->connect();
-        // $add_account->insertData($sql, $data);
-
-        // save employee
-        // $account_code = new CRUD_database;
-        // $account_code->connect();
-        // $row = $account_code->executeOne("SELECT account_code FROM accounts WHERE account_name = '$account'");
-        // if (isset($row['account_code'])) {
-        //     $account_code = $row['account_code'];
-        // }
-        // $data = array("$fullname", "$birthday", "$address", "$phone", "$email", "$possition", "$salary", "$account_code");
-        // $sql = 'INSERT INTO employees (employee_fullname, employee_birthday, employee_address,
-        //  employee_phone,employee_email,employee_possition,employee_salary, join_day, account_code) values (?,?,?,?,?,?,?,NOW(),?)';
-        // $addEmployee = new CRUD_database;
-        // $addEmployee->connect();
-        // $addEmployee->insertData($sql, $data);
     }
 
     public static function save_new_employee(
@@ -108,7 +453,7 @@ class Admin
         $salary,
         $join_day,
         $account,
-        $status  
+        $status
     ) {
         $checkForm = true;
         $register_result = [];

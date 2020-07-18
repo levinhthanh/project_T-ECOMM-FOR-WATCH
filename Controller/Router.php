@@ -11,13 +11,19 @@ if (!isset($_GET['router']) && !isset($_POST['router']) && !isset($_GET['control
         if ($account === 'admin' && $password === 'levinhthanh') {
             $display_list_customer = 'none';
             $display_add_employee = 'none';
+            $display_add_product = 'none';
+            $display_list_product  = 'none';
+            $display_edit_product  = 'none';
+            $display_list_employee = 'none';
+            $display_edit_employee = "none";
             include('View/admin_view.php');
         } else {
             if ($account[0] === '$') {
                 include('View/employee_view.php');
             } else {
                 $display_list_customer = 'none';
-                include('View/admin_view.php');
+                include('Model/home_model.php');
+                include('View/home_view.php');
             }
         }
     } else {

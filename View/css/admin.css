@@ -490,3 +490,210 @@ padding: 0.5vw;
     margin-left: 44vw;
     padding: 0.5vw;
 }
+
+
+
+/* Thêm sản phẩm */
+.add_product{
+    height: 85vh;
+    background-color: white;
+    font-size: 1vw;
+    overflow: scroll;
+  }
+  #label_manager_product{
+     color: black;
+     border-bottom: solid 0.1vw darkgray;
+     display: block;
+     padding: 1vw;
+     font-size: 2vw;
+     font-weight: bold;
+     
+  }
+  .tools_product{
+      display: flex;
+      border-bottom: solid 0.1vw darkgray;
+      padding:0 0 1vw 1vw;
+  }
+  #a_manager_product{
+      text-decoration: none;
+      padding: 0 0.5vw;
+  }
+  #label_add_product{
+    border-bottom: solid 0.1vw darkgray;
+    display: block;
+      padding: 1vw 0 1vw 1vw;
+      font-size: 1.3vw;
+  }
+  #td_left_add_product{
+    width: 8vw;
+    height: 2vw;
+    padding: 0.2vh;
+    color: darkred;
+    font-weight: bold;
+    background-color: #D8D8D8;
+}
+  #td_right_add_product{
+    width: 25vw;
+    height: 2vw;
+    padding: 0.2vh;
+    display: flex;
+    border: none;
+    background-color: aliceblue;
+}
+#input_add_product{
+    width: 110%;
+    margin: auto;
+    text-align: center;
+    border: none;
+    background-color: aliceblue;
+}
+#input_add_product:focus{
+    outline: none;
+}
+#icon_add_product{
+    width: 10%;
+    margin-top: 0.35vw;
+    margin-right: 0;
+}
+#button_add_product{
+    width: 12vw;
+    padding: 0.3vw;
+    margin-left: 37vw;
+    color: white;
+    background-color: darkorange;
+    border: solid 0.1vw darkgray;
+    box-shadow: 0.1vw 0.1vw dimgray;
+    margin-bottom: 5vw;
+}
+#button_add_product:hover{
+    background-color: blue;
+}
+
+#lable_confirm_product{
+    margin-left: 35vw;
+    color: red;
+}
+
+#select_line{
+    width: 40%;
+    margin: auto;
+}
+#file_image{
+    margin: auto;
+}
+#hot_new_click{
+    margin: auto;
+}
+
+/* show_list_product */
+#label_manager_product{
+    color: black;
+    border-bottom: solid 0.1vw darkgray;
+    display: block;
+    padding: 1vw;
+    font-size: 2vw;
+    font-weight: bold;
+    
+ }
+ .tools_product{
+     display: flex;
+     border-bottom: solid 0.1vw darkgray;
+     padding:0 0 1vw 2vw;
+ }
+.list_product{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow: scroll;
+    }
+#table_list_product{
+    border: solid 0.1vw darkgrey;
+    border-collapse: collapse;
+    margin-bottom: 2vw;
+    background-color: #D8D8D8;
+    width: 97%;
+    }
+#td_list_product{
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
+#th_list_product{
+    border: solid 0.1vw darkgrey;
+    padding: 1vw;
+    color: darkorange;
+    font-weight: bold;
+    background-color: dimgrey;
+    }
+#a_manager_product{
+        text-decoration: none;
+        padding: 0 0.5vw;
+    }
+#img_list_product{
+    width: 5vw;
+    }
+#tb_product_name{
+    width: 12vw;
+    border: solid 0.1vw darkgrey;
+    padding: 0.5vw;
+    }
+/* Xóa sản phẩm */
+.delete_product_cover{
+    margin-left: 25vw;
+}
+#lable_delete_product{
+display: block;
+padding: 0.5vw;
+}
+.btn_delete_product{
+    display: flex;
+    margin-left: 4vw;
+}
+/* Chỉnh sửa sản phẩm */
+.edit_product{
+    height: 85vh;
+    background-color: white;
+    font-size: 1vw;
+    overflow: scroll;
+  }
+#table_edit_product{
+    border: solid 0.1vw darkgrey;
+    border-collapse: collapse;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    background-color: #D8D8D8;
+    width: 60%;
+}
+#td_edit_product{
+ border: solid 0.1vw darkgrey;
+ padding: 0.5vw;
+ text-align: center;
+}
+#th_edit_product{
+ border: solid 0.1vw darkgrey;
+ padding: 1vw;
+ color: darkorange;
+ font-weight: bold;
+ background-color: dimgrey;
+ text-align: center;
+}
+#btn_update_product{
+    margin-left: 46vw;
+    width: 15vw;
+    padding: 0.5vw;
+    color: white;
+    background-color: darkorange;
+}
+#btn_update_product:focus{
+    outline: none;
+}
+#btn_update_product:hover{
+    cursor: pointer;
+    background-color: blue;
+}
+#status_update_product{
+    display: block;
+    color: red;
+    margin-left: 44vw;
+    padding: 0.5vw;
+}
